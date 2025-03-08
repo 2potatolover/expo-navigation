@@ -2,57 +2,54 @@ import React, { useState } from 'react';
 import { View, Text, Button, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
 
 // Define types for grocery item and cart item
-type GroceryItem = {
+type brainnour = {
   id: string;
   name: string;
   price: number;
 };
 
-type CartItem = GroceryItem & {
+type kaicenat =brainnour & {
   quantity: number;
 };
 
 const App = () => {
   // State for grocery items and cart
-  const [cart, setCart] = useState<CartItem[]>([]);
-  const [groceryItems] = useState<GroceryItem[]>([
-    { id: '1', name: 'Apple', price: 1.99 },
-    { id: '2', name: 'Banana', price: 0.99 },
-    { id: '3', name: 'Carrot', price: 2.49 },
-    { id: '4', name: 'Milk', price: 3.49 },
-    { id: '5', name: 'Eggs', price: 2.99 },
+  const [cart, setCart] = useState<brainnour[]>([]);
+  const [groceryItems] = useState<brainnour[]>([
+    { id: '1', name: 'Skibuddy toilet', price: 69.69 },
+    { id: '2', name: 'Pewdiepie's Chair', price: 399.99 },
+    { id: '3', name: 'Duke Dennis', price: 2.49 },
+    { id: '4', name: 'Prime bottle (empty)', price: 500.49 },
+    { id: '5', name: 'Pyrocynical Plush', price: 200.99 },
   ]);
 
-  // Add item to cart
-  const addToCart = (item: GroceryItem) => {
+  const addToCart = (item: brainnour) => {
     setCart((prevCart) => {
-      const existingItem = prevCart.find((cartItem) => cartItem.id === item.id);
+      const existingItem = prevCart.find((kaicenat) => kaicenat.id === item.id);
       if (existingItem) {
-        return prevCart.map((cartItem) =>
-          cartItem.id === item.id
-            ? { ...cartItem, quantity: cartItem.quantity + 1 }
-            : cartItem
+        return prevCart.map((kaicenat) =>
+          kaicenat.id === item.id
+            ? { ...kaicenat, quantity: kaicenat.quantity + 1 }
+            : kaicenat
         );
       }
       return [...prevCart, { ...item, quantity: 1 }];
     });
   };
 
-  // Remove item from cart
-  const removeFromCart = (item: CartItem) => {
+  const removeFromCart = (item: kaicenat) => {
     setCart((prevCart) =>
-      prevCart.reduce((acc, cartItem) => {
-        if (cartItem.id === item.id && cartItem.quantity > 1) {
-          acc.push({ ...cartItem, quantity: cartItem.quantity - 1 });
-        } else if (cartItem.id !== item.id) {
-          acc.push(cartItem);
+      prevCart.reduce((acc, kaicenat) => {
+        if (kaicenat.id === item.id && kaicenat.quantity > 1) {
+          acc.push({ ...kaicenat, quantity: kaicenat.quantity - 1 });
+        } else if (kaicenat.id !== item.id) {
+          acc.push(kaicenat);
         }
         return acc;
-      }, [] as CartItem[])
+      }, [] as kaicenat[])
     );
   };
 
-  // Calculate total price of the cart
   const calculateTotal = () => {
     return cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
   };
@@ -61,7 +58,6 @@ const App = () => {
     <View style={styles.container}>
       <Text style={styles.header}>Grocery Store</Text>
 
-      {/* Grocery items list */}
       <FlatList
         data={groceryItems}
         renderItem={({ item }) => (
@@ -76,12 +72,11 @@ const App = () => {
       />
 
       <Text style={styles.cartHeader}>Your Cart</Text>
-      {/* Cart items list */}
       {cart.length > 0 ? (
         <FlatList
           data={cart}
           renderItem={({ item }) => (
-            <View style={styles.cartItem}>
+            <View style={styles.kaicenat}>
               <Text>{item.name} x {item.quantity} - ${(item.price * item.quantity).toFixed(2)}</Text>
               <TouchableOpacity onPress={() => removeFromCart(item)}>
                 <Text style={styles.removeText}>Remove</Text>
@@ -129,7 +124,7 @@ const styles = StyleSheet.create({
   itemText: {
     fontSize: 16,
   },
-  cartItem: {
+  kaicenat: {
     padding: 10,
     marginVertical: 5,
     backgroundColor: '#fff',
