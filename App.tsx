@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, Button, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
 
-// Define types for grocery item and cart item
 type brainnour = {
   id: string;
   name: string;
@@ -13,9 +12,8 @@ type kaicenat =brainnour & {
 };
 
 const App = () => {
-  // State for grocery items and cart
   const [cart, setCart] = useState<brainnour[]>([]);
-  const [groceryItems] = useState<brainnour[]>([
+  const [brainrotitems] = useState<brainnour[]>([
     { id: '1', name: 'Skibuddy toilet', price: 69.69 },
     { id: '2', name: 'Pewdiepie's Chair', price: 399.99 },
     { id: '3', name: 'Duke Dennis', price: 2.49 },
@@ -59,7 +57,7 @@ const App = () => {
       <Text style={styles.header}>Grocery Store</Text>
 
       <FlatList
-        data={groceryItems}
+        data={brainrotitems}
         renderItem={({ item }) => (
           <View style={styles.itemContainer}>
             <Text style={styles.itemText}>
@@ -94,7 +92,6 @@ const App = () => {
   );
 };
 
-// Styles
 const styles = StyleSheet.create({
   container: {
     flex: 1,
