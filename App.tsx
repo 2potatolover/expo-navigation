@@ -63,7 +63,7 @@ const App = () => {
             <Text style={styles.itemText}>
               {item.name} - ${item.price.toFixed(2)}
             </Text>
-            <Button title="Add to Cart" onPress={() => purchaserot(item)} />
+            <Button title="Add to Cart" onPress={() => purchaserot(item)}  color="#FF0000"/>
           </View>
         )}
         keyExtractor={(item) => item.id}
@@ -93,10 +93,13 @@ const App = () => {
 };
 
 const styles = StyleSheet.create({
+  button: {
+color: 'FF0000',
+  },
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#f8f8f8',
+    backgroundColor: '#000',
   },
   header: {
     fontSize: 24,
@@ -114,12 +117,14 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingVertical: 10,
     marginBottom: 10,
-    backgroundColor: '#fff',
+    backgroundColor: '#000',
     paddingHorizontal: 10,
     borderRadius: 5,
   },
   itemText: {
     fontSize: 16,
+    color: '#fff',
+
   },
   kaicenat: {
     padding: 10,
@@ -138,6 +143,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     marginTop: 20,
+    color: '#fff',
   },
 });
 
