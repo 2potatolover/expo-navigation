@@ -15,13 +15,13 @@ const App = () => {
   const [cart, setCart] = useState<brainnour[]>([]);
   const [brainrotitems] = useState<brainnour[]>([
     { id: '1', name: 'Skibuddy toilet', price: 69.69 },
-    { id: '2', name: 'Pewdiepie's Chair', price: 399.99 },
+    { id: '2', name: 'Pewdiepies Chair', price: 399.99 },
     { id: '3', name: 'Duke Dennis', price: 2.49 },
     { id: '4', name: 'Prime bottle (empty)', price: 500.49 },
     { id: '5', name: 'Pyrocynical Plush', price: 200.99 },
   ]);
 
-  const addToCart = (item: brainnour) => {
+  const purchaserot = (item: brainnour) => {
     setCart((prevCart) => {
       const existingItem = prevCart.find((kaicenat) => kaicenat.id === item.id);
       if (existingItem) {
@@ -35,7 +35,7 @@ const App = () => {
     });
   };
 
-  const removeFromCart = (item: kaicenat) => {
+  const brainhealing = (item: kaicenat) => {
     setCart((prevCart) =>
       prevCart.reduce((acc, kaicenat) => {
         if (kaicenat.id === item.id && kaicenat.quantity > 1) {
@@ -63,7 +63,7 @@ const App = () => {
             <Text style={styles.itemText}>
               {item.name} - ${item.price.toFixed(2)}
             </Text>
-            <Button title="Add to Cart" onPress={() => addToCart(item)} />
+            <Button title="Add to Cart" onPress={() => purchaserot(item)} />
           </View>
         )}
         keyExtractor={(item) => item.id}
@@ -76,7 +76,7 @@ const App = () => {
           renderItem={({ item }) => (
             <View style={styles.kaicenat}>
               <Text>{item.name} x {item.quantity} - ${(item.price * item.quantity).toFixed(2)}</Text>
-              <TouchableOpacity onPress={() => removeFromCart(item)}>
+              <TouchableOpacity onPress={() => brainhealing(item)}>
                 <Text style={styles.removeText}>Remove</Text>
               </TouchableOpacity>
             </View>
